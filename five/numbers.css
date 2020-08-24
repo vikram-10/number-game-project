@@ -1,0 +1,16 @@
+.wrapping{
+    width: 80%;
+    margin-left: 9%;
+}
+
+.heading{
+    text-align: center;
+}
+
+.contain{
+    margin-top: 10%;
+    margin-left: 20%;
+}
+img{
+    margin: 2px;
+}
