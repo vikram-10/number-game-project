@@ -4,13 +4,46 @@
 }
 
 .heading{
+    position: absolute;
     text-align: center;
+    color: aliceblue;
+    margin-top: -5%;
+    margin-left: 35%;
+    margin-bottom: 5%;
+    font-family: 'Bebas Neue', cursive;
+    border: 5px solid white;
+    padding:7px;
+    border-radius: 10px;
 }
 
 .contain{
+    position: relative;
     margin-top: 10%;
     margin-left: 32%;
+    background-color: blueviolet;
+    padding-bottom: 25px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 8px 8px black;
 }
 img{
     margin: 2px;
+}
+
+
+.rounder{
+    border-radius: 10px;
+    max-width: 150px;
+}
+
+#img9{
+    height: 150px;
+    width: 150px;
+}
+
+body{
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(162,32,182,1) 100%, rgba(0,212,255,1) 100%);
 }

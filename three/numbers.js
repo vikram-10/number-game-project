@@ -3,6 +3,7 @@ wrapper.setAttribute('class','wrapping');
 
 var header=document.createElement('h1');
 header.setAttribute('class','heading');
+header.setAttribute('id','dummyID');
 header.innerText="Number Game";
 
 var container=document.createElement('div');
@@ -46,6 +47,7 @@ for(var k=0;k<a.length;k++){
       container.append(breaker);
   }  
   var box=document.createElement('img');
+  box.setAttribute('class','rounder');
   box.setAttribute('src',`../assets/b${a[k]}.gif`);
   box.setAttribute('id',`img${a[k]}`);             //ASSIGNING RANDOM VALUES TO IMAGE SRC'S
   container.append(box);
@@ -60,137 +62,6 @@ var imgPositions=(images[0].getElementsByTagName('img'));
 blankPosition=gettingBlankPosition(imgPositions);
 
 
-//FOR CLICK EVENT LISTENER
-/*
-do{
-if(blankPosition==0){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });    
-}
-
-
-else if(blankPosition==1){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    })
-}
-
-
-else if(blankPosition==2){
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });
-}
-
-else if(blankPosition==3){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3); 
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });
-}
-
-else if(blankPosition==4){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3);
-        console.log(blankPosition);
-    });
-}
-else if(blankPosition==5){
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition+3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,3);
-        console.log(blankPosition);
-    });
-}
-else if(blankPosition==6){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3);
-        console.log(blankPosition);
-    });
-}
-else if(blankPosition==7){
-    imgPositions[blankPosition+1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,1);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    });
-}
-else if(blankPosition==8){
-    imgPositions[blankPosition-3].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-3);
-        console.log(blankPosition);
-    });
-    imgPositions[blankPosition-1].addEventListener("click",function(){
-        blankPosition=switchBoxes(blankPosition,-1);
-        console.log(blankPosition);
-    });
-}
-
-for(var k=0;k<imgPositions.length;k++){
-    if(imgpos[k]==k){
-        flag=1;
-    }
-}
-}while(flag==0);
-*/
 
 //FOR KEYBOARD EVENT LISTENERS
 var a=[];
@@ -201,6 +72,7 @@ window.addEventListener("keyup",function(e){
             for(var k=0;k<imgPositions.length;k++){
                 var imgpos=(imgPositions[k].id).split("img");
                 a.push(imgpos[1]);
+                checker();
             }
         }
         else if(e.keyCode===37){
@@ -209,6 +81,7 @@ window.addEventListener("keyup",function(e){
             for(var k=0;k<imgPositions.length;k++){
                 var imgpos=(imgPositions[k].id).split("img");
                 a.push(imgpos[1]);
+                checker();
             }
         }
         else if(e.keyCode==38){
@@ -218,6 +91,7 @@ window.addEventListener("keyup",function(e){
                 var imgpos=(imgPositions[k].id).split("img");
                 a.push(imgpos[1]);
                 //console.log(imgpos[1]);
+                checker();
             }
         }
         else if(e.keyCode==40){
@@ -225,20 +99,26 @@ window.addEventListener("keyup",function(e){
             a.length=0;
             for(var k=0;k<imgPositions.length;k++){
                 var imgpos=(imgPositions[k].id).split("img");
-                a.push(imgpos[1]);
+                a.push(+imgpos[1]);
             }
+            checker();
         }
-//TO CHECK IF ALL THE ELEMTS FROM A AND IMAGE ID NUMBER ARE SAME         
- var count1;       
+//TO CHECK IF ALL THE ELEMTS FROM A AND IMAGE ID NUMBER ARE SAME    
+function checker(){
+ var count1=0;       
         for(var l=0;l<a.length;l++){
-            count1=0;
             if(a[l]==l){
                 count1++;
             }
         }
         if(count1==a.length){
-            console.log("Game Over");
+            var heading=document.getElementById('dummyID');
+            heading.innerText="GAME OVER!!!";
         }
+        else{
+            count1=0;
+        }
+}
 });
 
 
